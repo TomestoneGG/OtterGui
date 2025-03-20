@@ -323,7 +323,7 @@ public class ItemSelector<T>
         if (!OpenNameField(newNamePopupAdd, out var newName))
             return;
 
-        if (OnAdd(newName))
+        if (!string.IsNullOrEmpty(newName) && OnAdd(newName))
         {
             TryRestoreCurrent();
             SetFilterDirty();
