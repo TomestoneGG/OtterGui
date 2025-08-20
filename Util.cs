@@ -423,13 +423,13 @@ public static partial class ImGuiUtil
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static void HoverIcon(IDalamudTextureWrap icon, Vector2 iconSize)
-        => HoverIcon(icon.ImGuiHandle, icon.Size, iconSize);
+        => HoverIcon(icon.Handle, icon.Size, iconSize);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static void HoverIcon(ISharedImmediateTexture icon, Vector2 iconSize)
     {
         if (icon.TryGetWrap(out var wrap, out _))
-            HoverIcon(wrap.ImGuiHandle, wrap.Size, iconSize);
+            HoverIcon(wrap.Handle, wrap.Size, iconSize);
         else
             ImGui.Dummy(iconSize);
     }
@@ -453,7 +453,7 @@ public static partial class ImGuiUtil
 
         using var enable = ImRaii.Enabled();
         ImGui.BeginTooltip();
-        ImGui.Image(icon.ImGuiHandle, size);
+        ImGui.Image(icon.Handle, size);
         if (text.Length > 0)
             ImGui.TextUnformatted(text);
         ImGui.EndTooltip();
